@@ -18,7 +18,7 @@ Exercise.init(
     group: {
         type: DataTypes.STRING,
         allowNull: false,
-        defaultValue: "Upper Body"
+        defaultValue: "Upper Body",
     },
     muscle: {
         type: DataTypes.STRING,
@@ -36,7 +36,7 @@ Exercise.init(
     difficulty: {
         type: DataTypes.STRING,
         allowNull: false,
-        defaultValue: "Difficulty not set."
+        defaultValue: "Difficulty not set.",
     },
     image: {
         type: DataTypes.STRING,
@@ -52,4 +52,4 @@ Exercise.init(
     underscored: true,
     modelName: 'exercise',
     }
-)
+);
