@@ -1,3 +1,7 @@
 // Require the modules from same directory (folder)
+const Exercise = require('./Exercise');
+const User = require('./User');
 
-module.exports = { /* ADD MODULE NAME HERE*/}
+
+
+module.exports = { Exercise, User }
