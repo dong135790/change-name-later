@@ -24,7 +24,7 @@ Exercise.init(
         type: DataTypes.STRING,
         allowNull: false,
     },
-    equpment: {
+    equipment: {
         type: DataTypes.STRING,
         allowNull: false,
         defaultValue: "None",
