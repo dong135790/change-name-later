@@ -10,7 +10,7 @@ router.get('/', async (req, res) => {
 
         const workout = exerciseData.map((data) => data.get({ plain: true }));
 
-        res.render('homepage', {workout})
+        res.render('home', {workout})
     } catch (err) {
         console.log(err);
         res.status(500).json(err)
