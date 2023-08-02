@@ -53,3 +53,5 @@ Exercise.init(
     modelName: 'exercise',
     }
 );
+
+module.exports = Exercise;
