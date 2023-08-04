@@ -3,7 +3,7 @@ const seedExcercise = require('./excercisedata');
 
 const seedAll = async () => {
     await sequelize.sync({force: true})
-    // await seedExcercise();
+    await seedExcercise();
     process.exit(0);
 }
 seedAll();

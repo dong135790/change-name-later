@@ -1,6 +1,6 @@
-const {Excercise} = require ('../models');
+const {Exercise} = require ('../models');
 
-const excercisedata = [
+const exercisedata = [
     {
         name: 'Tricep dips',
         group: 'Arms',
@@ -53,6 +53,6 @@ const excercisedata = [
     },
 ];
 
-// const seedExcercise = () => Excercise.bulkCreate(excercisedata); 
+const seedExercise = () => Exercise.bulkCreate(exercisedata); 
 
-// module.exports = seedExcercise;
+module.exports = seedExercise;

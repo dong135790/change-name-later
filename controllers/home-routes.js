@@ -67,6 +67,7 @@ router.get('/routine/:id', async (req,res) => {
 router.get('/exercise/:id', async (req,res) => {
   try {
     const singleExercise = await Exercise.findByPk(req.params.id)
+    console.log(singleExercise)
     const exercise = singleExercise.get({ plain: true });
     res.render('exercise', {exercise});
   } catch (err) {

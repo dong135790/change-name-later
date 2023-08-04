@@ -32,6 +32,7 @@ Exercise.init(
     instruction: {
         type: DataTypes.STRING,
         allowNull: false,
+        defaultValue: "None",
     },
     difficulty: {
         type: DataTypes.STRING,
