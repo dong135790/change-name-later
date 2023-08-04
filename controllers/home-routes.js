@@ -18,6 +18,17 @@ router.get('/', async (req, res) => {
     }
 });
 
+router.get('/exercise/:id', async (req,res) => {
+  try {
+    const singleExercise = await Exercise.findByPk(req.params.id)
+    const exercise = singleExercise.get({ plain: true });
+    res.render('exercise', {exercise});
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+})
+
 // Login route
 router.get('/login', (req, res) => {
     if (req.session.loggedIn) {
