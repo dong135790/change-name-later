@@ -29,7 +29,7 @@ router.get('/routine', async (req,res) => {
     console.log(err);
     res.status(500).json(err);
   }
-})
+});
 
 // Get routines by id
 router.get('/routine/:id', async (req,res) => {
@@ -61,7 +61,18 @@ router.get('/routine/:id', async (req,res) => {
   }
 })
 
+router.get('/exercise', async (req,res) => {
+  try {
+    const allExercise = await Routine.findAll();
 
+    const viewExercise = allExercise.map((data) => data.get({ plain: true }));
+
+    res.render('exercises', {viewExercise})
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
 
 // Get exercise by id
 router.get('/exercise/:id', async (req,res) => {

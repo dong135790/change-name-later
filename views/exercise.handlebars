@@ -1,6 +1,6 @@
-<section class="exercise">
-  <div class="exercise-details">
-    <h3>{{exercise.name}}</h3>
-    <p>By: {{exercise.muscle}}</p>
-  </div>
+<section>
+  <h3>List of workouts</h3>
+{{#each exercise}}
+{{> exercise-details}}
+{{/each}}
 </section>
