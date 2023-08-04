@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Exercise } = require('../models');
+const { Exercise, Routine } = require('../models');
 
 // Import custom middleware?
 // const withAuth = require('../utils/auth');
@@ -17,6 +17,63 @@ router.get('/', async (req, res) => {
         res.status(500).json(err)
     }
 });
+// Get all routine
+router.get('/routine', async (req,res) => {
+  try {
+    const allRoutine = await Routine.findAll();
+
+    const viewRoutine = allRoutine.map((data) => data.get({ plain: true }));
+
+    res.render('routines', {viewRoutine})
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+})
+
+// Get routines by id
+router.get('/routine/:id', async (req,res) => {
+  try {
+    const singleRoutine = await Exercise.findByPk(req.params.id, {
+      include: [
+      {
+        model: Routine,
+        attributes: [
+          'id',
+          'name',
+          'group',
+          'muscle',
+          'equipment',
+          'instruction',
+          'difficulty',
+          'image',
+          'description',
+        ]
+      },
+    ],
+    });
+
+    const routine = singleRoutine.get({ plain: true});
+    res.render('routine', {routine});
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+})
+
+
+
+// Get exercise by id
+router.get('/exercise/:id', async (req,res) => {
+  try {
+    const singleExercise = await Exercise.findByPk(req.params.id)
+    const exercise = singleExercise.get({ plain: true });
+    res.render('exercise', {exercise});
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+})
 
 // Login route
 router.get('/login', (req, res) => {
