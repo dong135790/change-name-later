@@ -17,6 +17,20 @@ router.get('/', async (req, res) => {
         res.status(500).json(err)
     }
 });
+// Get all routine
+router.get('/routine', async (req,res) => {
+  try {
+    const allRoutine = await Routine.findAll();
+
+    const viewRoutine = allRoutine.map((data) => data.get({ plain: true }));
+
+    res.render('routines', {viewRoutine})
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+})
+
 // Get routines by id
 router.get('/routine/:id', async (req,res) => {
   try {
