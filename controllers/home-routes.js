@@ -90,6 +90,7 @@ router.get('/group/:id', async (req,res) => {
     
 // ADD A SQL COMMAND LIKELY HERE TO DISPLAYE BASED OFF OF GROUP 
     const group = singleGroup.get({ plain: true});
+    console.log(group)
     res.render('single-group', {group});
   } catch (err) {
     console.log(err);
