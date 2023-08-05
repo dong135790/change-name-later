@@ -1,4 +1,4 @@
-const { MuscleGroup } = require('../models');
+const { Group } = require('../models');
 
 const MuscleGroupdata = [
   {
@@ -21,6 +21,6 @@ const MuscleGroupdata = [
   }
 ];
 
-const seedMuscleGroup = () => MuscleGroup.bulkCreate(MuscleGroupdata);
+const seedMuscleGroup = () => Group.bulkCreate(MuscleGroupdata);
 
 module.exports = seedMuscleGroup;

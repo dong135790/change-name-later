@@ -1,5 +1,6 @@
 const router = require('express').Router();
-const { Exercise, User, MuscleGroup } = require('../models');
+const sequelize = require('../config/connection');
+const { Exercise, User, Group, Routine } = require('../models');
 
 // Import custom middleware?
 // const withAuth = require('../utils/auth');
@@ -9,7 +10,7 @@ router.get('/', async (req, res) => {
     try {
         console.log('hi')
         const exerciseData = await Exercise.findAll({});
-        const allGroup = await MuscleGroup.findAll();
+        const allGroup = await Group.findAll();
 
         const viewAllGroup = allGroup.map((data) => data.get({ plain: true }));
         // res.status(200).json(exerciseData);
@@ -23,10 +24,10 @@ router.get('/', async (req, res) => {
         res.status(500).json(err)
     }
 });
-// Get all MuscleGroup
+// Get all Group WE CURRENTLY DO NOT USE THIS 
 router.get('/group', async (req,res) => {
   try {
-    const allGroup = await MuscleGroup.findAll();
+    const allGroup = await Group.findAll();
 
     const viewAllGroup = allGroup.map((data) => data.get({ plain: true }));
 
@@ -37,10 +38,10 @@ router.get('/group', async (req,res) => {
   }
 });
 
-// Get muscleGroup by id
+// Get Group by id NOT FINISHED
 router.get('/group/:id', async (req,res) => {
   try {
-    const singleGroup = await MuscleGroup.findByPk(req.params.id, {
+    const singleGroup = await Group.findByPk(req.params.id, {
       include: [
       {
         model: Exercise,
@@ -57,17 +58,27 @@ router.get('/group/:id', async (req,res) => {
         ]
       },
     ],
+    // attributes: {
+    //   include: [
+    //     [
+    //       sequelize.literal(
+    //         '(SELECT name FROM exercise WHERE group = ??'
+    //       )
+    //     ]
+    //   ]
+    // }
     });
+    
 // ADD A SQL COMMAND LIKELY HERE TO DISPLAYE BASED OFF OF GROUP 
     const group = singleGroup.get({ plain: true});
-    res.render('single-routine', {group});
+    res.render('single-group', {group});
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
   }
 })
 
-// Get all exercise
+// Get all exercise. FINISHED
 router.get('/exercise', async (req,res) => {
   try {
     const allExercise = await Exercise.findAll();
@@ -81,7 +92,7 @@ router.get('/exercise', async (req,res) => {
   }
 });
 
-// Get exercise by id
+// Get exercise by id. Finished
 router.get('/exercise/:id', async (req,res) => {
   try {
     const singleExercise = await Exercise.findByPk(req.params.id)
@@ -96,6 +107,20 @@ router.get('/exercise/:id', async (req,res) => {
   }
 })
 
+// Get all routine
+router.get('/routine', async (req,res) => {
+  try {
+    const allRoutine = await Routine.findAll();
+
+    const routine = allRoutine.map((data) => data.get({ plain: true }));
+    console.log(routine)
+
+    res.render('routine', {routine})
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
 // Login route
 router.get('/login', (req, res) => {
     if (req.session.loggedIn) {
