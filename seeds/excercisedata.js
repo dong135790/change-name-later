@@ -10,6 +10,7 @@ const exercisedata = [
         difficulty: 'Intermidiate',
         images: '',
         description: 'Tricep dip workout',
+        group_id: 1
     },
     {
         name: 'Bicep curls',
