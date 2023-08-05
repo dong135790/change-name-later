@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Routine extends Model {}
+class MuscleGroup extends Model {}
 
-Routine.init(
+MuscleGroup.init(
 {
     id: {
         type: DataTypes.INTEGER,
@@ -15,7 +15,7 @@ Routine.init(
         type: DataTypes.STRING,
         allowNull: false,
     },
-    routine_id: {
+    group_id: {
         type: DataTypes.INTEGER,
         references: {
             model: 'exercise',
@@ -27,8 +27,8 @@ Routine.init(
     sequelize,
     freezeTableName: true,
     underscored: true,
-    modelName: 'routine',
+    modelName: 'muscleGroup',
 }
 );
 
-module.exports = Routine;
+module.exports = MuscleGroup;

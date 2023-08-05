@@ -1,46 +1,49 @@
 const router = require('express').Router();
-const { Exercise, Routine } = require('../models');
+const { Exercise, User, MuscleGroup } = require('../models');
 
 // Import custom middleware?
 // const withAuth = require('../utils/auth');
 
-// Home route
+// Home route Gets all exercise and group
 router.get('/', async (req, res) => {
     try {
         console.log('hi')
         const exerciseData = await Exercise.findAll({});
+        const allGroup = await MuscleGroup.findAll();
+
+        const viewAllGroup = allGroup.map((data) => data.get({ plain: true }));
         // res.status(200).json(exerciseData);
 
-        console.log(exerciseData)
         const workout = exerciseData.map((data) => data.get({ plain: true }));
+        console.log(viewAllGroup)
         console.log(workout)
-        res.render('home', {workout})
+        res.render('home', {workout, viewAllGroup})
     } catch (err) {
         console.log(err);
         res.status(500).json(err)
     }
 });
-// Get all routine
-router.get('/routine', async (req,res) => {
+// Get all MuscleGroup
+router.get('/group', async (req,res) => {
   try {
-    const allRoutine = await Routine.findAll();
+    const allGroup = await MuscleGroup.findAll();
 
-    const viewRoutine = allRoutine.map((data) => data.get({ plain: true }));
+    const viewAllGroup = allGroup.map((data) => data.get({ plain: true }));
 
-    res.render('routines', {viewRoutine})
+    res.render('group', {viewAllGroup})
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
   }
 });
 
-// Get routines by id
-router.get('/routine/:id', async (req,res) => {
+// Get muscleGroup by id
+router.get('/group/:id', async (req,res) => {
   try {
-    const singleRoutine = await Exercise.findByPk(req.params.id, {
+    const singleGroup = await MuscleGroup.findByPk(req.params.id, {
       include: [
       {
-        model: Routine,
+        model: Exercise,
         attributes: [
           'id',
           'name',
@@ -55,15 +58,16 @@ router.get('/routine/:id', async (req,res) => {
       },
     ],
     });
-
-    const routine = singleRoutine.get({ plain: true});
-    res.render('routine', {routine});
+// ADD A SQL COMMAND LIKELY HERE TO DISPLAYE BASED OFF OF GROUP 
+    const group = singleGroup.get({ plain: true});
+    res.render('single-routine', {group});
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
   }
 })
 
+// Get all exercise
 router.get('/exercise', async (req,res) => {
   try {
     const allExercise = await Exercise.findAll();
