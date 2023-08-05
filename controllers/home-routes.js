@@ -9,16 +9,27 @@ const { Exercise, User, Group, Routine } = require('../models');
 router.get('/', async (req, res) => {
     try {
         console.log('hi')
-        const exerciseData = await Exercise.findAll({});
-        const allGroup = await Group.findAll();
-
+        const allGroup = await Group.findAll({
+          include: [
+            {
+              model: Exercise,
+              attributes: [
+                'id',
+                'name',
+                'muscle',
+                'equipment',
+                'instruction',
+                'difficulty',
+                'image',
+                'description',
+                'group_id',
+              ]
+            },
+          ],
+        });
+    
         const viewAllGroup = allGroup.map((data) => data.get({ plain: true }));
-        // res.status(200).json(exerciseData);
-
-        const workout = exerciseData.map((data) => data.get({ plain: true }));
-        console.log(viewAllGroup)
-        console.log(workout)
-        res.render('home', {workout, viewAllGroup})
+        res.render('home', { viewAllGroup})
     } catch (err) {
         console.log(err);
         res.status(500).json(err)
@@ -27,11 +38,29 @@ router.get('/', async (req, res) => {
 // Get all Group WE CURRENTLY DO NOT USE THIS 
 router.get('/group', async (req,res) => {
   try {
-    const allGroup = await Group.findAll();
+    const allGroup = await Group.findAll({
+      include: [
+        {
+          model: Exercise,
+          attributes: [
+            'id',
+            'name',
+            'muscle',
+            'equipment',
+            'instruction',
+            'difficulty',
+            'image',
+            'description',
+            'group_id',
+          ]
+        },
+      ],
+    });
 
     const viewAllGroup = allGroup.map((data) => data.get({ plain: true }));
+    res.status(200).json(viewAllGroup);
 
-    res.render('group', {viewAllGroup})
+    // res.render('group', {viewAllGroup})
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
@@ -48,29 +77,20 @@ router.get('/group/:id', async (req,res) => {
         attributes: [
           'id',
           'name',
-          'group',
           'muscle',
           'equipment',
           'instruction',
           'difficulty',
           'image',
-          'description',
+          'description'
         ]
       },
     ],
-    // attributes: {
-    //   include: [
-    //     [
-    //       sequelize.literal(
-    //         '(SELECT name FROM exercise WHERE group = ??'
-    //       )
-    //     ]
-    //   ]
-    // }
     });
     
 // ADD A SQL COMMAND LIKELY HERE TO DISPLAYE BASED OFF OF GROUP 
     const group = singleGroup.get({ plain: true});
+    console.log(group)
     res.render('single-group', {group});
   } catch (err) {
     console.log(err);

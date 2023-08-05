@@ -15,11 +15,6 @@ Exercise.init(
         type: DataTypes.STRING,
         allowNull: false,
     },
-    group: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        defaultValue: "Upper Body",
-    },
     muscle: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -46,12 +41,20 @@ Exercise.init(
         type: DataTypes.STRING,
         allowNull: false,
     },
+    group_id: {
+        type: DataTypes.INTEGER,
+        references: {
+          model: 'group',
+          key: 'id',
+        },
+      },
     },
     {
     sequelize,
+    timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'exercise',
+    modelName: 'exercises',
     }
 );
 

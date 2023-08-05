@@ -10,6 +10,7 @@ const exercisedata = [
         difficulty: 'Intermidiate',
         images: '',
         description: 'Tricep dip workout',
+        group_id: 1
     },
     {
         name: 'Bicep curls',
@@ -20,6 +21,8 @@ const exercisedata = [
         difficulty: 'Beginner',
         images: '',
         description: 'Bicep curl workout',
+        group_id: 1
+
     },
     {
         name: 'Tricep pushdown',

@@ -14,17 +14,11 @@ Group.init(
     name: {
         type: DataTypes.STRING,
         allowNull: false,
-    },
-    group_id: {
-        type: DataTypes.INTEGER,
-        references: {
-            model: 'exercise',
-            key: 'id',
-        },
-    },
+    }
 },
 {
     sequelize,
+    timestamps: false,
     freezeTableName: true,
     underscored: true,
     modelName: 'group',
