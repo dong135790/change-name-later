@@ -1,14 +1,14 @@
 // Require the modules from same directory (folder)
 const Exercise = require('./Exercise');
 const User = require('./User');
-const Routine = require('./Routine');
+const MuscleGroup = require('./MuscleGroup');
 
-Routine.hasMany(Exercise, {
-    foreignKey: 'routine_id',
+MuscleGroup.hasMany(Exercise, {
+    foreignKey: 'group_id',
   });
   
-  Exercise.belongsTo(Routine, {
-    foreignKey: 'routine_id',
+  Exercise.belongsTo(MuscleGroup, {
+    foreignKey: 'group_id',
   });
 
-module.exports = { Exercise, User, Routine }
+module.exports = { Exercise, User, MuscleGroup }
