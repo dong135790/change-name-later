@@ -10,7 +10,8 @@ const exercisedata = [
         difficulty: 'Intermidiate',
         images: '',
         description: 'Tricep dip workout',
-        group_id: 1
+        group_id: 3,
+        routine_id: 1
     },
     {
         name: 'Bicep curls',
@@ -21,7 +22,7 @@ const exercisedata = [
         difficulty: 'Beginner',
         images: '',
         description: 'Bicep curl workout',
-        group_id: 1,
+        group_id: 3,
         routine_id: 1
     },
     {
@@ -33,6 +34,8 @@ const exercisedata = [
         difficulty: 'Beginner',
         images: '',
         description: 'Tricep pushdown workout',
+        group_id: 3,
+        routine_id: 2,
     },
     {
         name: 'Hammer curls',
@@ -43,6 +46,8 @@ const exercisedata = [
         difficulty: 'Intermidiate',
         images: '',
         description: 'Hammer curl workout',
+        group_id: 3,
+        routine_id: 2,
     },
     {
         name: 'Rear delt fly',
@@ -53,6 +58,8 @@ const exercisedata = [
         difficulty: 'Advanced',
         images: '',
         description: 'Rear delt fly workout',
+        group_id: 3,
+        routine_id: 2,
     },
 ];
 
