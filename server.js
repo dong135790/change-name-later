@@ -22,8 +22,8 @@ const sess = {
   }),
 };
 
-app.use(routes);
 app.use(session(sess));
+app.use(routes);
 
 const hbs = exphbs.create({ helpers });
 

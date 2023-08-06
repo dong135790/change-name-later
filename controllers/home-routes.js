@@ -130,12 +130,63 @@ router.get('/exercise/:id', async (req,res) => {
 // Get all routine
 router.get('/routine', async (req,res) => {
   try {
-    const allRoutine = await Routine.findAll();
+    const allRoutine = await Routine.findAll({
+      include: [
+        {
+          model: Exercise,
+          attributes: [
+            'id',
+            'name',
+            'muscle',
+            'equipment',
+            'instruction',
+            'difficulty',
+            'image',
+            'description',
+            'group_id',
+            'routine_id',
+          ]
+        },
+      ],
+    });
 
     const routine = allRoutine.map((data) => data.get({ plain: true }));
     console.log(routine)
 
     res.render('routine', {routine})
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+// Get routine by id
+router.get('/routine/:id', async (req,res) => {
+  try {
+    const singleRoutine = await Routine.findByPk(req.params.id, {
+      include: [
+        {
+          model: Exercise,
+          attributes: [
+            'id',
+            'name',
+            'muscle',
+            'equipment',
+            'instruction',
+            'difficulty',
+            'image',
+            'description',
+            'group_id',
+            'routine_id',
+          ]
+        },
+      ],
+    })
+    
+    const routine = singleRoutine.get({ plain: true });
+    // res.status(200).json(routine);
+    console.log(routine)
+    res.render('single-routine', {routine});
   } catch (err) {
     console.log(err);
     res.status(500).json(err);

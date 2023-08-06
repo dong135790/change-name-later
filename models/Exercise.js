@@ -48,6 +48,13 @@ Exercise.init(
           key: 'id',
         },
       },
+    routine_id: {
+    type: DataTypes.INTEGER,
+    references: {
+        model: 'routine',
+        key: 'id',
+    },
+    },
     },
     {
     sequelize,
