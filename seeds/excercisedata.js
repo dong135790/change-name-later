@@ -21,8 +21,8 @@ const exercisedata = [
         difficulty: 'Beginner',
         images: '',
         description: 'Bicep curl workout',
-        group_id: 1
-
+        group_id: 1,
+        routine_id: 1
     },
     {
         name: 'Tricep pushdown',
