@@ -2,23 +2,33 @@ const { Group } = require('../models');
 
 const MuscleGroupdata = [
   {
-    name: 'Upper Body',
+    name: 'Shoulder',
+    image: 'j',
   },
   {
-    name: 'Lower Body',
+    name: 'Chest',
+    image: 'j',
   },
   {
     name: 'Arms',
+    image: 'j',
+  },
+  {
+    name: 'Back',
+    image: 'j',
+  },
+  {
+    name: 'Arms',
+    image: 'j',
   },
   {
     name: 'Legs',
+    image: 'j',
   },
   {
-    name: 'Abdominal'
+    name: 'Abdominal',
+    image: 'j',
   },
-  {
-    name: 'Cardio'
-  }
 ];
 
 const seedMuscleGroup = () => Group.bulkCreate(MuscleGroupdata);

@@ -9,7 +9,8 @@
         "preseed": "node config/init seed",
         "seed": "node seeds/index",
         "prewatch": "node config/init",
-        "watch": "nodemon server"
+        "watch": "nodemon server",
+        "begin": "node seeds/index && nodemon server"
     },
     "keywords": [],
     "author": "",
