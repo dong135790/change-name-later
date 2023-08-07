@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
 const { Exercise, User, Group, Routine } = require('../models');
+const withAuth = require('../utils/auth');
 
 // Import custom middleware?
 // const withAuth = require('../utils/auth');
@@ -27,16 +28,22 @@ router.get('/', async (req, res) => {
             },
           ],
         });
-    
+        const allUser = await User.findAll();
+        const viewAllUser = allUser.map((data) => data.get({ plain: true }));
         const viewAllGroup = allGroup.map((data) => data.get({ plain: true }));
-        res.render('home', { viewAllGroup})
+        res.render('home', {
+        viewAllGroup,
+        viewAllUser,
+        loggedIn: req.session.loggedIn,
+
+        })
     } catch (err) {
         console.log(err);
         res.status(500).json(err)
     }
 });
 // Get all Group WE CURRENTLY DO NOT USE THIS 
-router.get('/group', async (req,res) => {
+router.get('/group', withAuth, async (req,res) => {
   try {
     const allGroup = await Group.findAll({
       include: [
@@ -68,7 +75,7 @@ router.get('/group', async (req,res) => {
 });
 
 // Get Group by id NOT FINISHED
-router.get('/group/:id', async (req,res) => {
+router.get('/group/:id', withAuth, async (req,res) => {
   try {
     const singleGroup = await Group.findByPk(req.params.id, {
       include: [
@@ -192,6 +199,77 @@ router.get('/routine/:id', async (req,res) => {
     res.status(500).json(err);
   }
 });
+// Create Routine TODO
+router.post('/createRoutine', async (req, res) => {
+  try {
+    const createRoutine = await Routine.create({
+      include: Exercise,
+      attributes: [
+        'id',
+        'name',
+        'muscle',
+        'equipment',
+        'instruction',
+        'difficulty',
+        'image',
+        'description',
+        'group_id',
+        'routine_id',
+      ]
+    })
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+})
+
+// PUT Update Existing Routing TODO
+router.put('/update', async (req,res) => {
+  try {
+    const allExercise = await Exercise.findAll();
+
+    const viewExercise = allExercise.map((data) => data.get({ plain: true }));
+    res.status(200).json(viewExercise)
+
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+// PUT Delete Routine DONE
+router.put('/delete/:id', async (req,res) => {
+  try {
+    // find routine by id 
+    const routine = await Routine.destroy({
+      where: {
+        id: req.params.id,
+      }
+    });
+    if (!routine) {
+      res.status(404).json({message: 'No routine data based on id!'});
+      return;
+    }
+    res.status(200).json(routine)
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+
+// Update Routine
+router.put('/routine',async (req, res) => {
+  try {
+    const updateExercise = await Exercise.findAll();
+    const routine = updateExercise.map((data) => data.get({ plain: true }));
+    res.status(200).json(routine);
+    
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
 // Login route
 router.get('/login', (req, res) => {
     if (req.session.loggedIn) {
