@@ -6,6 +6,7 @@ const Routine = require('./Routine');
 
 Group.hasMany(Exercise, {
   foreignKey: 'group_id',
+  onDelete: 'SET NULL',
 });
 
 Exercise.belongsTo(Group, {
@@ -14,6 +15,7 @@ Exercise.belongsTo(Group, {
 
 Routine.hasMany(Exercise, {
   foreignKey: 'routine_id',
+  onDelete: 'SET NULL',
 });
 
 Exercise.belongsTo(Routine, {
