@@ -18,6 +18,11 @@ Group.init(
     image: {
         type: DataTypes.STRING,
     },
+    description: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        defaultValue: "not set",
+    },
 },
 {
     sequelize,
