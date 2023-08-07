@@ -1,4 +1,6 @@
 const router = require('express').Router();
+const { Op } = require('sequelize');
+const e = require('express');
 const sequelize = require('../config/connection');
 const { Exercise, User, Group, Routine } = require('../models');
 const withAuth = require('../utils/auth');
@@ -7,7 +9,7 @@ const withAuth = require('../utils/auth');
 // const withAuth = require('../utils/auth');
 
 // Home route Gets all exercise and group
-router.get('/', async (req, res) => {
+router.get('/', withAuth, async (req, res) => {
     try {
         console.log('hi')
         const allGroup = await Group.findAll({
@@ -31,6 +33,7 @@ router.get('/', async (req, res) => {
         const allUser = await User.findAll();
         const viewAllUser = allUser.map((data) => data.get({ plain: true }));
         const viewAllGroup = allGroup.map((data) => data.get({ plain: true }));
+        console.log('LOGGED IN', req.session.loggedIn)
         res.render('home', {
         viewAllGroup,
         viewAllUser,
@@ -106,7 +109,7 @@ router.get('/group/:id', withAuth, async (req,res) => {
 })
 
 // Get all exercise. FINISHED
-router.get('/exercise', async (req,res) => {
+router.get('/exercise', withAuth, async (req,res) => {
   try {
     const allExercise = await Exercise.findAll();
 
@@ -120,7 +123,7 @@ router.get('/exercise', async (req,res) => {
 });
 
 // Get exercise by id. Finished
-router.get('/exercise/:id', async (req,res) => {
+router.get('/exercise/:id', withAuth, async (req,res) => {
   try {
     const singleExercise = await Exercise.findByPk(req.params.id)
     // res.status(200).json(singleExercise);
@@ -135,7 +138,7 @@ router.get('/exercise/:id', async (req,res) => {
 })
 
 // Get all routine
-router.get('/routine', async (req,res) => {
+router.get('/routine', withAuth, async (req,res) => {
   try {
     const allRoutine = await Routine.findAll({
       include: [
@@ -168,7 +171,7 @@ router.get('/routine', async (req,res) => {
 });
 
 // Get routine by id
-router.get('/routine/:id', async (req,res) => {
+router.get('/routine/:id', withAuth, async (req,res) => {
   try {
     const singleRoutine = await Routine.findByPk(req.params.id, {
       include: [
@@ -185,15 +188,31 @@ router.get('/routine/:id', async (req,res) => {
             'description',
             'group_id',
             'routine_id',
-          ]
+          ],
         },
       ],
+    });
+    const currentExercieData = await singleRoutine.getExercises();
+    const currentExercieIds = currentExercieData.map(o => o.id);
+    const filteredExercises = await Exercise.findAll({
+      where: {
+        id: {
+          [Op.not]: currentExercieIds
+        }
+      },
     })
+    const listOfExercies = filteredExercises.map(o => o.get({ plain: true }));
+
+    console.log(listOfExercies);
+
+    const allExerciseButRoutine = await Exercise.findAll({})
+    const viewExercise = allExerciseButRoutine.map((data) => data.get({ plain: true }));
     
     const routine = singleRoutine.get({ plain: true });
     // res.status(200).json(routine);
-    console.log(routine)
-    res.render('single-routine', {routine});
+    // console.log(routine)
+    // console.log(viewExercise)
+    res.render('single-routine', { routine, viewExercise, listOfExercies });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
@@ -256,7 +275,6 @@ router.put('/delete/:id', async (req,res) => {
   }
 });
 
-
 // Update Routine
 router.put('/routine',async (req, res) => {
   try {
@@ -277,7 +295,17 @@ router.get('/login', (req, res) => {
       return;
     }
   
-    res.render('login');
+    res.render('login', { loggedIn: req.session.loggedIn });
   });
+
+// Login route
+router.get('/signup', (req, res) => {
+  if (req.session.loggedIn) {
+    res.redirect('/');
+    return;
+  }
+
+  res.render('signup', { loggedIn: req.session.loggedIn });
+});
 
 module.exports = router; 
