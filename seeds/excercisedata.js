@@ -16,7 +16,7 @@ const exercisedata = [
     {
         name: 'Bicep curls',
         group: 'Arms',
-        muscle: 'Biceps brachii, brachialis and brachioradialis',
+        muscle: 'Biceps brachii, brachialis, & brachioradialis',
         equipment: 'Dumbbell or machine',
         instructions: 'To do a biceps curl with a dumbbell, hold a dumbbell with your palm facing upward. Slowly curl the weight up by bending your elbow, keeping your elbow close to your body. Then slowly lower the weight to the starting position.',
         difficulty: 'Beginner',
@@ -28,7 +28,7 @@ const exercisedata = [
     {
         name: 'Tricep pushdown',
         group: 'Arms',
-        muscle: 'Tricep pushdowns target the medial and lateral heads of the triceps',
+        muscle: 'Branchii Lateral, Long Head, & Medial',
         equipment: 'Cable machine',
         instructions: 'Attach a rope attachment or horizontal bar to the cable machine. Face the cable machine with your feet slightly apart. Brace your abs and tuck your elbows at your sides. Make sure that your chest is out and the shoulder blades are together. Slightly bend forward too. Inhale. Push the attachment down until your elbows are fully extended but not locked in the joint. As you push the bar down, exhale. Slowly bring the attachment back up and inhale as you do so.',
         difficulty: 'Beginner',
@@ -40,7 +40,7 @@ const exercisedata = [
     {
         name: 'Hammer curls',
         group: 'Arms',
-        muscle: 'Bicep brachii, brachialis, and brachioradialis',
+        muscle: 'Bicep brachii, brachialis, & brachioradialis',
         equipment: 'Dumbbells',
         instructions: 'While keeping your upper arms still, squeeze your bicep and bend your elbows until your lower arms touch your upper arms. The dumbbells should finish very close to your shoulders without actually touching your shoulders. Squeeze your biceps and pause for a few seconds at the top of the movement',
         difficulty: 'Intermidiate',
@@ -64,7 +64,7 @@ const exercisedata = [
     {
         name: 'Leg press',
         group: 'Legs',
-        muscle: 'Quadripcap, gluteal, hamstring, and calf',
+        muscle: 'Quadripcap, gluteal, hamstring, & calf',
         equipment: 'Weight machine',      
         instructions: 'To start, sit with your back against a padded backrest and your feet on two large footrests. Your knees are bent to start the exercise. To move the weight, you must straighten your legs and then return them to the bent position.',
         difficulty: 'Beginner',
@@ -76,7 +76,7 @@ const exercisedata = [
     {
         name: 'Lunges',
         group: 'Legs',
-        muscle: 'Gluteal, hamstring, quadricep, and calf',
+        muscle: 'Gluteal, hamstring, quadricep, & calf',
         equipment: 'Dumbbells or none',      
         instructions: 'Stand with your feet hip-width apart, keep your back straight, your shoulders back, and your abs tight. Take a step forward and slowly bend both knees, until your back knee is just above the floor. Stand back up and repeat the movement. Alternate legs until the set is complete',
         difficulty: 'Intermidiate',
@@ -88,7 +88,7 @@ const exercisedata = [
     {
         name: 'Crunches',
         group: 'Abdominals',
-        muscle: 'Abdominals and Obliques',
+        muscle: 'Abdominals & Obliques',
         equipment: 'none',
         instructions: 'Lie down on the mat, keep your knees bent, your back and feet flat, and your hands supporting your head. 2. Lift your shoulders, squeeze your abdominal muscles and hold for 1 to 2 seconds.',
         difficulty: 'Intermediate',
@@ -100,7 +100,7 @@ const exercisedata = [
     {
         name: 'Russian twists',
         group: 'Abdominals',
-        muscle: 'Abdominals and Obliques',
+        muscle: 'Abdominals & Obliques',
         equipment: 'none',
         instructions: 'You will rotate your torso from side to side while sitting in an upright position with your feet lifted off the ground.',
         difficulty: 'Advanced',
@@ -112,7 +112,7 @@ const exercisedata = [
     {
         name: 'Bench press',
         group: 'Chest & Shoulder',
-        muscle: 'Pectoral and shoulder muscles',
+        muscle: 'Pectoral, front delts, & triceps',
         equipment: 'Bench with barbell',
         instructions: 'Person lays supine on the bench, knees bent and feet flat on the floor. Grip the bar (grip can vary depending on goal) and un-rack bar. Lower the bar to the chest (around nipple level) Press the bar upward until the arms are fully extended, keep the feet on the floor.',
         difficulty: 'Intermediate',
@@ -124,7 +124,7 @@ const exercisedata = [
     {
         name: 'Push Ups',
         group: 'Chest, Arms, & Core',
-        muscle: 'Pectorals, deltoid, tricep, and abdominals',
+        muscle: 'Pectorals, deltoid, tricep, & abdominals',
         equipment: 'none',
         instructions: 'From a prone position, the hands are placed under the shoulders with the elbows extended. Keeping the back and legs straight with the toes touching the ground. The body is lowered until the upper arm is parallel to the ground. Then reverse the movement and raise the body until arm is extended.',
         difficulty: 'Intermediate',
@@ -136,7 +136,7 @@ const exercisedata = [
     {
         name: 'Seated Cable row',
         group: 'Back',
-        muscle: 'Latissimus dorsi',
+        muscle: 'Lats, deltoids, & trapezius',
         equipment: 'Seated row machine',
         instructions: 'You should be sitting straight upright with your shoulders back. This is the starting position. Keeping your body in position, pull the handle into your stomach. Pull your shoulder blades back, squeeze, pause, and then slowly lower the weight back to the starting position.',
         difficulty: 'Intermediate',
@@ -148,7 +148,7 @@ const exercisedata = [
     {
         name: 'Pull ups',
         group: 'Back and Arms',
-        muscle: 'Latissimus dorsi, trapezius, biceps, and triceps',
+        muscle: 'Lats, trapezius, biceps, & triceps',
         equipment: 'Pull up bar',
         instructions: 'Step 1: Grab the pull-up bar with a 1-1.5x shoulder width grip, palms facing away from you. Step 2: Pull the body upward driving the chest toward the bar/handles until the arms/elbows are packed into the side of the body. Step 3: Reverse the pattern and return to starting position',
         difficulty: 'Advanced',
@@ -160,7 +160,7 @@ const exercisedata = [
     {
         name: 'Shoulder Press',
         group: 'Shoulders',
-        muscle: 'Deltoids, triceps, and trapezius',
+        muscle: 'Deltoids, triceps, & trapezius',
         equipment: 'Dumbbells',
         instructions: 'Taking a dumbbell in each hand, stand shoulder width apart with the hips and spine in a neutral position. Lift the dumbbells so that they are positioned in between your shoulders and ears, palms facing forward. Engage your core and glutes and extend your arms to press the dumbbells above your head.',
         difficulty: 'Intermediate',
@@ -172,7 +172,7 @@ const exercisedata = [
     {
         name: 'Renegade Row',
         group: 'Shoulders',
-        muscle: 'Triceps, trapezius, abdominals, obliques, and rhomboids',
+        muscle: 'Triceps, trapezius, & rhomboids',
         equipment: 'Dumbbells',
         instructions: 'Drive your right arm through the dumbbell into the floor, stiffen your entire body, and row the left dumbbell up and to the side of your rib cage—your elbow should be pointed up and back. Keep your body stable as you slowly lower the dumbbell back to the floor. Then repeat on the other side.',
         difficulty: 'Advanced',

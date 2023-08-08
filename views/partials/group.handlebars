@@ -1,6 +1,9 @@
-<section>
+<section class="groupContainer col-6 col-sm-3 containerGroup">
     <a href="/group/{{id}}">
     <p>{{name}}</p>
     <img src="images/{{image}}" alt="{{description}}" width="300" height="300">
     </a>
 </section>
+{{#if nextLine}}
+       <div class="w-100"></div>
+{{/if}}

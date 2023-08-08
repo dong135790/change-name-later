@@ -1,7 +1,46 @@
-/* body {
-    font-family: sans-serif;
-    background-color: purple;
-} */
+
+body {
+    font-family: "Barlow Condensed", "Arial Narrow", "Roboto Condensed", "Open Sans Condensed", sans-serif;
+    background-color: rgb(54, 131, 194);
+    color: rgb(21, 47, 117);
+
+}
 h1 {
-    color: pink
+
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.groupContainer {
+    margin: 20px 50px;
+}
+
+.exercise {
+    margin: 20px;
+    /* width: 50%; */
+    /* height: 50%; */
+    /* width: 85vw;     */
+}
+p, header{
+    color: rgb(21, 47, 117);
+
+}
+.allExercise {
+    display: flex;
+    flex-wrap: wrap;
+}
+.allExercises {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#routinePage {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.containerGroup {
+    background-color: rgb(15, 177, 177);
 }

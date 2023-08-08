@@ -1,6 +1,17 @@
+<div>
+    <div>
+    <h1>
+        <p>TRAIN HARD,</p> HEALTH AND FITNESS
+    </h1>
+</div>
+    <div class="container text-center">
+        <section class="row">
+            {{#each viewAllGroup as |group|}}
+            {{> group}}
+            {{/each}}
+        </section>
+    </div>
+</div>
 
-{{#each viewAllGroup as |group|}}
-{{> group}}
-{{/each}}
 
 {{!-- {{log loggedIn}} --}}
