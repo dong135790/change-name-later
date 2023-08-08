@@ -1,4 +1,3 @@
-const { and } = require('sequelize');
 const {Exercise} = require ('../models');
 
 const exercisedata = [
