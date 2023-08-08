@@ -4,13 +4,12 @@
     <input type="hidden" value="{{id}}">
     
       <div class="exercise-details">
-        <div class="routineID">{{id}}</div>
+        <div class="routineID" style="visibility:hidden">{{id}}</div>
         <header>{{name}}</header>
-        <img src="/" alt="">
       </div>
     </a>
     <div class="form-group">
-      <button class="btn btn-primary" onclick="deleteRoutine({{id}})" type="submit">Delete{{id}}</button>
+      <button class="btn btn-primary" onclick="deleteRoutine({{id}})" type="submit">Delete</button>
     </div>
   </form>
 </section>
