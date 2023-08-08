@@ -1,3 +1,19 @@
-{{#each routine.exercises as |routine|}}
-{{> single-routineDetails}}
-{{/each}}
+<div id="routine">
+  {{#each routine.exercises as |routine|}}
+  {{> single-routineDetails}}
+  {{/each}}
+</div>
+<div class="addToRoutine">
+  <h2>Add your exercise to routine!</h2>
+  {{#each listOfExercies}}
+  <div class="form-check">
+    <label class="exercise-label" for="{{id}}">
+      <input class="exercise-input" type="checkbox" id="{{id}}">
+      {{name}}
+    </label>
+  </div>
+  {{/each}}
+  <button class="btn btn-primary" type="submit" id="addToRoutine">Add to routine</button>
+</div>
+
+<script src="/js/update.js"></script>

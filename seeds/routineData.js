@@ -7,6 +7,9 @@ const routineData = [
   {
     name: 'Routine 2',
   },
+  {
+    name: 'Routine 3',
+  },
 ];
 
 const seedRoutine = () => Routine.bulkCreate(routineData);

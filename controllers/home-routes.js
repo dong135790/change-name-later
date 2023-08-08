@@ -205,14 +205,11 @@ router.get('/routine/:id', withAuth, async (req,res) => {
 
     console.log(listOfExercies);
 
-    const allExerciseButRoutine = await Exercise.findAll({})
-    const viewExercise = allExerciseButRoutine.map((data) => data.get({ plain: true }));
-    
     const routine = singleRoutine.get({ plain: true });
     // res.status(200).json(routine);
     // console.log(routine)
     // console.log(viewExercise)
-    res.render('single-routine', { routine, viewExercise, listOfExercies });
+    res.render('single-routine', { routine, listOfExercies });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);

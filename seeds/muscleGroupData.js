@@ -18,10 +18,6 @@ const MuscleGroupdata = [
     image: 'j',
   },
   {
-    name: 'Arms',
-    image: 'j',
-  },
-  {
     name: 'Legs',
     image: 'j',
   },

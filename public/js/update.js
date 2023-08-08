@@ -1,43 +1,39 @@
-const updateRoutine = async (event) => {
-  event.preventDefault();
-    // const routineID = document.querySelector('.routineID').innerHTML;
-    // Plus 1 since it is null and i cant get the value for some reason
-    // const id = routineID;
-    // console.log('not yet')
-    // console.log(id)
-    
-    
-
-    const response = await fetch('/update/'+ id, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' }
+const addExerciseToRoutine = async (event) => {
+    event.preventDefault();
+    const checked = document.querySelectorAll('input:checked');
+    const ids = [...checked].map(o => +o.id);
+    const routineId = document.location.pathname.split('/').at(-1);
+    const response = await fetch(`/api/routines/${routineId}/add/exercies/`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(ids),
     });
 
     if (response.ok) {
-        console.log('hi')
+        document.location.reload();
+    } else {
+        console.log('SOMETHING WHENT WRONG');
     }
-return false
-}
+};
 
-// const deleteExercise = async (event) => {
-//     event.preventDefault();
-//     console.log('not yet')
+const removeExerciseFromRoutine = async (event) => {
+    event.preventDefault();
+    const target = event.target;
+    if (target.matches('button')) {
+        const routineId = document.location.pathname.split('/').at(-1);
+        const response = await fetch(`/api/routines/${routineId}/remove/exercies/`, {
+            method: 'DELETE',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ id: target.id }),
+        });
+        if (response.ok) {
+            document.location.reload();
+        } else {
+            console.log('SOMETHING WHENT WRONG');
+        }
+    }
 
-//     const response = await fetch('/delete/:id', {
-//         method: 'PUT',
-//         headers: { 'Content-Type': 'application/json' }
-//     });
+};
 
-//     if (response.ok) {
-//         console.log('hi')
-//     }
-// }
-
-
-// const list = document.querySelectorAll('.delete-form');
-// list.forEach((item) => {
-//     item.addEventListener('submit', deleteRoutine);
-// })
-// document
-// .querySelector('.deleteExercise-form')
-// .addEventListener('submit', deleteExercise);
+document.querySelector('#addToRoutine').addEventListener('click', addExerciseToRoutine);
+document.querySelector('#routine').addEventListener('click', removeExerciseFromRoutine);
