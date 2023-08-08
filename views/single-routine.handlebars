@@ -1,7 +1,9 @@
-<div id="routine">
-  {{#each routine.exercises as |routine|}}
-  {{> single-routineDetails}}
-  {{/each}}
+<div class="allExercise text-center">
+  <div id="routine" class="allExercise text-center">
+    {{#each routine.exercises as |routine|}}
+    {{> single-routineDetails}}
+    {{/each}}
+  </div>
 </div>
 <div class="addToRoutine">
   <h2>Add your exercise to routine!</h2>
@@ -15,5 +17,4 @@
   {{/each}}
   <button class="btn btn-primary" type="submit" id="addToRoutine">Add to routine</button>
 </div>
-
 <script src="/js/update.js"></script>

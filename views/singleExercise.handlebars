@@ -1,13 +1,15 @@
 
-<section>
-    <img src="/images/{{exercise.image}}" alt="{{exercise.description}}"width="360" height="360">
-    <header>
-        <h3>Exercise: {{exercise.name}}</h3>
-        <h4>Muscle: {{exercise.muscle}}</h4>
-    </header>
-    <div>
-    <p>Difficulty: {{exercise.difficulty}}</p>
-    <p>Equipment: {{exercise.equipment}}</p>
-    <p>Instruction: {{exercise.instruction}}</p>
-    </div>
-</section>
+<div class="allExercises grid text-center">
+    <section class="containerGroup exercise g-col-4">
+        <img src="/images/{{exercise.image}}" alt="{{exercise.description}}"width="360" height="360">
+        <header>
+            <h3>Exercise: {{exercise.name}}</h3>
+            <h4>Muscle: {{exercise.muscle}}</h4>
+        </header>
+        <div>
+        <p>Difficulty: {{exercise.difficulty}}</p>
+        <p>Equipment: {{exercise.equipment}}</p>
+        <p>Instruction: {{exercise.instruction}}</p>
+        </div>
+    </section>
+</div>
