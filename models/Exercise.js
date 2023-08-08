@@ -36,6 +36,8 @@ Exercise.init(
     },
     image: {
         type: DataTypes.STRING,
+        allowNull: false,
+        defaultValue: 'ab-workouts.jpg'
     },
     description: {
         type: DataTypes.STRING,

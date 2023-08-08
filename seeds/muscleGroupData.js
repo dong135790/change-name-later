@@ -3,27 +3,30 @@ const { Group } = require('../models');
 const MuscleGroupdata = [
   {
     name: 'Shoulder',
-    image: 'j',
+    image: 'shoulder-workout.webp',
+    description: 'Shoulder workout group'
   },
   {
     name: 'Chest',
-    image: 'j',
+    image: 'best-chest-workout.jpg',
+    description: 'Chest workout group'
   },
   {
     name: 'Arms',
-    image: 'j',
+    image: 'arm-muscles-pic.webp',
+    description: 'Arm workout group'
   },
   {
     name: 'Back',
-    image: 'j',
+    image: 'back-workout.jpg',
   },
   {
     name: 'Legs',
-    image: 'j',
+    image: 'legs-workout.jpg',
   },
   {
     name: 'Abdominal',
-    image: 'j',
+    image: 'ab-workouts.jpg',
   },
 ];
 

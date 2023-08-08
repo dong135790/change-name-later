@@ -34,6 +34,8 @@ router.get('/', withAuth, async (req, res) => {
         const viewAllUser = allUser.map((data) => data.get({ plain: true }));
         const viewAllGroup = allGroup.map((data) => data.get({ plain: true }));
         console.log('LOGGED IN', req.session.loggedIn)
+        console.log(viewAllGroup)
+    // res.status(200).json(viewAllGroup);
         res.render('home', {
         viewAllGroup,
         viewAllUser,
@@ -114,6 +116,7 @@ router.get('/exercise', withAuth, async (req,res) => {
     const allExercise = await Exercise.findAll();
 
     const viewExercise = allExercise.map((data) => data.get({ plain: true }));
+    // res.status(200).json(viewExercise);
 
     res.render('exercise', {viewExercise})
   } catch (err) {
@@ -203,12 +206,11 @@ router.get('/routine/:id', withAuth, async (req,res) => {
     })
     const listOfExercies = filteredExercises.map(o => o.get({ plain: true }));
 
-    console.log(listOfExercies);
+    // console.log(listOfExercies);
 
     const routine = singleRoutine.get({ plain: true });
     // res.status(200).json(routine);
-    // console.log(routine)
-    // console.log(viewExercise)
+    console.log(routine)
     res.render('single-routine', { routine, listOfExercies });
   } catch (err) {
     console.log(err);
