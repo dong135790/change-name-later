@@ -14,7 +14,8 @@ const MuscleGroupdata = [
   {
     name: 'Arms',
     image: 'arm-muscles-pic.webp',
-    description: 'Arm workout group'
+    description: 'Arm workout group',
+    nextLine: 'Arm'
   },
   {
     name: 'Back',

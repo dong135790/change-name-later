@@ -23,6 +23,10 @@ Group.init(
         allowNull: false,
         defaultValue: "not set",
     },
+    nextLine: {
+        type: DataTypes.STRING,
+        allowNull: true,
+    }
 },
 {
     sequelize,

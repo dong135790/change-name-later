@@ -1,6 +1,10 @@
+<div class="container text-center">
+    <section class="row">
+        {{#each viewAllGroup as |group|}}
+        {{> group}}
+        {{/each}}
+    </section>
+</div>
 
-{{#each viewAllGroup as |group|}}
-{{> group}}
-{{/each}}
 
 {{!-- {{log loggedIn}} --}}
