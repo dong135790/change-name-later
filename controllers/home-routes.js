@@ -33,8 +33,6 @@ router.get('/', withAuth, async (req, res) => {
         const allUser = await User.findAll();
         const viewAllUser = allUser.map((data) => data.get({ plain: true }));
         const viewAllGroup = allGroup.map((data) => data.get({ plain: true }));
-        console.log('LOGGED IN', req.session.loggedIn)
-        console.log(viewAllGroup)
     // res.status(200).json(viewAllGroup);
         res.render('home', {
         viewAllGroup,
@@ -103,7 +101,7 @@ router.get('/group/:id', withAuth, async (req,res) => {
 // ADD A SQL COMMAND LIKELY HERE TO DISPLAYE BASED OFF OF GROUP 
     const group = singleGroup.get({ plain: true});
     console.log(group)
-    res.render('single-group', {group});
+    res.render('single-group', {group,  loggedIn: req.session.loggedIn });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
@@ -118,7 +116,7 @@ router.get('/exercise', withAuth, async (req,res) => {
     const viewExercise = allExercise.map((data) => data.get({ plain: true }));
     // res.status(200).json(viewExercise);
 
-    res.render('exercise', {viewExercise})
+    res.render('exercise', {viewExercise,  loggedIn: req.session.loggedIn })
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
@@ -133,7 +131,7 @@ router.get('/exercise/:id', withAuth, async (req,res) => {
 
     console.log(singleExercise)
     const exercise = singleExercise.get({ plain: true });
-    res.render('singleExercise', {exercise});
+    res.render('singleExercise', {exercise,  loggedIn: req.session.loggedIn });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
@@ -166,7 +164,7 @@ router.get('/routine', withAuth, async (req,res) => {
     const routine = allRoutine.map((data) => data.get({ plain: true }));
     console.log(routine)
 
-    res.render('routine', {routine})
+    res.render('routine', {routine,  loggedIn: req.session.loggedIn })
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
@@ -211,7 +209,7 @@ router.get('/routine/:id', withAuth, async (req,res) => {
     const routine = singleRoutine.get({ plain: true });
     // res.status(200).json(routine);
     console.log(routine)
-    res.render('single-routine', { routine, listOfExercies });
+    res.render('single-routine', { routine, listOfExercies,  loggedIn: req.session.loggedIn });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);

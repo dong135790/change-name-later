@@ -1,12 +1,14 @@
-<section class="containerGroup exercise g-col-4">
-    <h3>Exercise:{{name}}</h3>
-    <p>Muscle:{{muscle}}</p>
-    <p>Equipment:{{equipment}}</p>
-    <p>Difficulty:{{difficulty}}</p>    
-    <p>Instructions:{{instruction}}</p>
-    <img src="/images/{{image}}" alt="{{description}}" width="360" height="360">
-    <div class="form-group">
-        <button class="btn btn-danger" id="{{id}}" type="submit">Delete</button>
+<section class="col-12 col-md-6 col-xl-4">
+    <div class="card containerGroup exercise p-3">
+        <h3>Exercise:{{name}}</h3>
+        <p>Muscle:{{muscle}}</p>
+        <p>Equipment:{{equipment}}</p>
+        <p>Difficulty:{{difficulty}}</p>    
+        <p>Instructions:{{instruction}}</p>
+        <img class="img-fluid" src="/images/{{image}}" alt="{{description}}">
+        <div class="form-group mt-3">
+            <button class="btn btn-danger" id="{{id}}" type="submit">Delete</button>
+        </div>
     </div>
 </section>
 

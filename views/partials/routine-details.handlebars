@@ -1,15 +1,15 @@
 <section class="exercise">
-  <form class="delete-form">
-    <a href="/routine/{{id}}">
+  <form class="delete-form d-flex align-items-center flex-column">
+    <a class="text-decoration-none text-center" href="/routine/{{id}}">
     <input type="hidden" value="{{id}}">
     
       <div class="exercise-details">
         <div class="routineID" style="visibility:hidden">{{id}}</div>
-        <header>{{name}}</header>
+        <h2 class="text-dark">{{name}}</h2>
       </div>
     </a>
     <div class="form-group">
-      <button class="btn btn-primary" onclick="deleteRoutine({{id}})" type="submit">Delete</button>
+      <button class="btn btn-danger" onclick="deleteRoutine({{id}})" type="submit">Delete</button>
     </div>
   </form>
 </section>

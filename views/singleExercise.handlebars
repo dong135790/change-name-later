@@ -1,15 +1,17 @@
 
-<div class="allExercises grid text-center">
-    <section class="containerGroup exercise g-col-4">
-        <img src="/images/{{exercise.image}}" alt="{{exercise.description}}"width="360" height="360">
-        <header>
-            <h3>Exercise: {{exercise.name}}</h3>
-            <h4>Muscle: {{exercise.muscle}}</h4>
-        </header>
-        <div>
-        <p>Difficulty: {{exercise.difficulty}}</p>
-        <p>Equipment: {{exercise.equipment}}</p>
-        <p>Instruction: {{exercise.instruction}}</p>
+<div class="allExercises text-center row">
+    <section class="col-12 col-md-6 col-xl-4">
+        <div class="card containerGroup exercise p-3">
+            <img class="img-fluid" src="/images/{{exercise.image}}" alt="{{exercise.description}}">
+            <header>
+                <h3>Exercise: {{exercise.name}}</h3>
+                <h4>Muscle: {{exercise.muscle}}</h4>
+            </header>
+            <div>
+            <p>Difficulty: {{exercise.difficulty}}</p>
+            <p>Equipment: {{exercise.equipment}}</p>
+            <p>Instruction: {{exercise.instruction}}</p>
+            </div>
         </div>
     </section>
 </div>
